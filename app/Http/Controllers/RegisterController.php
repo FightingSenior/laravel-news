@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Setting;
+use App\Models\User;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +19,7 @@ class RegisterController extends Controller
     {
         $setting = Setting::first();
 
-        return view('authentication.register',compact('setting'));
+        return view('authentication.register', compact('setting'));
     }
 
     public function registration(Request $request)
@@ -41,6 +41,4 @@ class RegisterController extends Controller
 
         return redirect()->route('dashboard');
     }
-
-
 }

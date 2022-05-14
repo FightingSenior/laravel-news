@@ -1,15 +1,16 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
-$factory->define(App\News::class, function (Faker $faker) {
+$factory->define(App\Models\News::class, function (Faker $faker) {
 
     $title = $faker->sentence;
 
     return [
 
         'title'         => $title,
-        'slug'          => str_slug($title),
+        'slug'          => Str::slug($title),
         'details'       => $faker->paragraph,
         'image'         => 'post.jpg',
         'status'        => $faker->boolean,

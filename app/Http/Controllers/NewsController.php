@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\News;
-use App\Category;
+use App\Models\News;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -19,7 +20,7 @@ class NewsController extends Controller
 
     public function create()
     {
-        $categories = Category::latest()->select('id','name')->where('status',1)->get();
+        $categories = Category::latest()->select('id', 'name')->where('status', 1)->get();
 
         return view('backend.news.create', compact('categories'));
     }
@@ -34,26 +35,26 @@ class NewsController extends Controller
             'image'         => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
 
-        if(isset($request->featured)){
+        if (isset($request->featured)) {
             $featured = true;
-        }else{
+        } else {
             $featured = false;
         }
 
         if ($request->hasFile('image')) {
-            $imageName = 'news-'.time().uniqid().'.'.$request->image->getClientOriginalExtension();
+            $imageName = 'news-' . time() . uniqid() . '.' . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('images'), $imageName);
         }
 
         News::create([
             'title'         => $request->title,
-            'slug'          => str_slug($request->title),
+            'slug'          => Str::slug($request->title),
             'details'       => $request->details,
             'category_id'   => $request->category_id,
             'image'         => $imageName,
@@ -73,13 +74,13 @@ class NewsController extends Controller
 
     public function edit(News $news)
     {
-        $categories = Category::latest()->select('id','name')->where('status',1)->get();
+        $categories = Category::latest()->select('id', 'name')->where('status', 1)->get();
         $news       = News::findOrFail($news->id);
 
-        return view('backend.news.edit', compact('categories','news'));
+        return view('backend.news.edit', compact('categories', 'news'));
     }
 
- 
+
     public function update(Request $request, News $news)
     {
         $request->validate([
@@ -89,15 +90,15 @@ class NewsController extends Controller
             'image'         => 'image|mimes:jpg,png,jpeg'
         ]);
 
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
 
-        if(isset($request->featured)){
+        if (isset($request->featured)) {
             $featured = true;
-        }else{
+        } else {
             $featured = false;
         }
 
@@ -105,20 +106,19 @@ class NewsController extends Controller
 
         if ($request->hasFile('image')) {
 
-            if(file_exists(public_path('images/') . $news->image)){
+            if (file_exists(public_path('images/') . $news->image)) {
                 unlink(public_path('images/') . $news->image);
             }
 
-            $imageName = 'news-'.time().uniqid().'.'.$request->image->getClientOriginalExtension();
+            $imageName = 'news-' . time() . uniqid() . '.' . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('images'), $imageName);
-
-        }else{
+        } else {
             $imageName = $news->image;
         }
 
         $news->update([
             'title'         => $request->title,
-            'slug'          => str_slug($request->title),
+            'slug'          => Str::slug($request->title),
             'details'       => $request->details,
             'category_id'   => $request->category_id,
             'image'         => $imageName,
@@ -129,12 +129,12 @@ class NewsController extends Controller
         return redirect()->route('admin.news.index')->with(['message' => 'News updated successfully!']);
     }
 
- 
+
     public function destroy(News $news)
     {
         $news = News::findOrFail($news->id);
 
-        if(file_exists(public_path('images/') . $news->image)){
+        if (file_exists(public_path('images/') . $news->image)) {
             unlink(public_path('images/') . $news->image);
         }
 

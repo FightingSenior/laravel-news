@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use Auth;
-use Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
     public function profile()
     {
-        $user = User::where('id',Auth::id())->first();
+        $user = User::where('id', Auth::id())->first();
 
         return view('backend.settings.profile', compact('user'));
     }
@@ -20,14 +20,14 @@ class ProfileController extends Controller
     public function profileUpdate(Request $request)
     {
         request()->validate([
-          'name'      => 'required|string|max:250',
-          'email'     => 'required|string|email|max:250',
-          'photo'     => 'image|mimes:jpg,png,jpeg'
+            'name'      => 'required|string|max:250',
+            'email'     => 'required|string|email|max:250',
+            'photo'     => 'image|mimes:jpg,png,jpeg'
         ]);
 
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
 
@@ -35,12 +35,12 @@ class ProfileController extends Controller
 
         if ($request->hasFile('photo')) {
 
-            if(file_exists(public_path('images/') . $user->photo) && ($user->photo != 'default.png')){
+            if (file_exists(public_path('images/') . $user->photo) && ($user->photo != 'default.png')) {
                 unlink(public_path('images/') . $user->photo);
             }
-            $imageName = 'photo-'.time().uniqid().'.'.$request->photo->getClientOriginalExtension();
+            $imageName = 'photo-' . time() . uniqid() . '.' . $request->photo->getClientOriginalExtension();
             $request->photo->move(public_path('images'), $imageName);
-        }else{
+        } else {
             $imageName = $user->photo;
         }
 
@@ -65,7 +65,7 @@ class ProfileController extends Controller
 
 
     public function changePassword(Request $request)
-    {     
+    {
         if (!(Hash::check($request->get('currentpassword'), Auth::user()->password))) {
             return back()->with([
                 'message'    => 'Your current password does not matches with the password you provided! Please try again.',
@@ -73,7 +73,7 @@ class ProfileController extends Controller
             ]);
         }
 
-        if(strcmp($request->get('currentpassword'), $request->get('newpassword')) == 0){
+        if (strcmp($request->get('currentpassword'), $request->get('newpassword')) == 0) {
             return back()->with([
                 'message'    => 'New Password cannot be same as your current password! Please choose a different password.',
                 'alert-type' => 'error'

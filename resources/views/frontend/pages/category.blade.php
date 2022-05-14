@@ -29,7 +29,7 @@
                     </h3>
         
                     @if($key == 0)
-                        <p>{{ $featurednews->details }}</p>
+                        <p>{!! $featurednews->details !!}</p>
                     @endif
         
                     <ul>

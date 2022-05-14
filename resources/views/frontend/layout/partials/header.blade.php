@@ -4,7 +4,7 @@
             <div class="info">
                 <ul>
                     @php 
-                        $timezone = 'Asia/Dhaka';
+                        $timezone = 'Asia/Ho_Chi_Minh';
                         date_default_timezone_set($timezone);
                     @endphp
                     <li><span>{{ date('h:i A') }} - {{ date('d M Y') }}</span></li>

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('name','desc')->where('role_id','!=',1)->get();
+        $users = User::orderBy('name', 'desc')->where('role_id', '!=', 1)->get();
 
         return view('backend.users.index', compact('users'));
     }
@@ -20,25 +20,25 @@ class UsersController extends Controller
     }
 
     public function store(Request $request)
-    {   
+    {
         $request->validate([
-          'name'      => 'required|string|max:190',
-          'email'     => 'required|string|email|max:190|unique:users',
-          'password'  => 'required|string|min:6',
-          'role_id'   => 'required|numeric',
-          'photo'     => 'image|mimes:jpg,png,jpeg'
+            'name'      => 'required|string|max:190',
+            'email'     => 'required|string|email|max:190|unique:users',
+            'password'  => 'required|string|min:6',
+            'role_id'   => 'required|numeric',
+            'photo'     => 'image|mimes:jpg,png,jpeg'
         ]);
 
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
 
         if ($request->hasFile('photo')) {
-            $imageName = 'user-'.time().uniqid().'.'.$request->photo->getClientOriginalExtension();
+            $imageName = 'user-' . time() . uniqid() . '.' . $request->photo->getClientOriginalExtension();
             $request->photo->move(public_path('images'), $imageName);
-        }else{
+        } else {
             $imageName = "default.png";
         }
 
@@ -64,28 +64,28 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-          'name'      => 'required|string|max:250',
-          'email'     => 'required|string|email|max:250',
-          'role_id'   => 'required|numeric',
-          'photo'     => 'image|mimes:jpg,png,jpeg'
+            'name'      => 'required|string|max:250',
+            'email'     => 'required|string|email|max:250',
+            'role_id'   => 'required|numeric',
+            'photo'     => 'image|mimes:jpg,png,jpeg'
         ]);
 
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
-        
+
         $user = User::findOrFail($id);
 
         if ($request->hasFile('photo')) {
 
-            if(file_exists(public_path('images/') . $user->photo) && ($user->photo != 'default.png')){
+            if (file_exists(public_path('images/') . $user->photo) && ($user->photo != 'default.png')) {
                 unlink(public_path('images/') . $user->photo);
             }
-            $imageName = 'user-'.time().uniqid().'.'.$request->photo->getClientOriginalExtension();
+            $imageName = 'user-' . time() . uniqid() . '.' . $request->photo->getClientOriginalExtension();
             $request->photo->move(public_path('images'), $imageName);
-        }else{
+        } else {
             $imageName = $user->photo;
         }
 
@@ -104,7 +104,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if(file_exists(public_path('images/') . $user->photo) && ($user->photo != 'default.png')){
+        if (file_exists(public_path('images/') . $user->photo) && ($user->photo != 'default.png')) {
             unlink(public_path('images/') . $user->photo);
         }
 
@@ -112,6 +112,4 @@ class UsersController extends Controller
 
         return back()->with(['message' => 'User deleted successfully!']);
     }
-
-
 }

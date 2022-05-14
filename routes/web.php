@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +71,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['user', 'editor', '
     Route::post('profile', 'ProfileController@profileUpdate')->name('profile.update');
     Route::post('changepassword', 'ProfileController@changePassword')->name('profile.changepassword');
 });
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

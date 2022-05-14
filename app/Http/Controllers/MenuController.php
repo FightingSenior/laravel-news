@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Menu;
-use App\News;
-use App\Category;
+use App\Models\Menu;
+use App\Models\News;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -12,18 +12,18 @@ class MenuController extends Controller
 
     public function index()
     {
-        $menus = Menu::orderBy('menuorder','asc')->get();
+        $menus = Menu::orderBy('menuorder', 'asc')->get();
 
         return view('backend.menu.index', compact('menus'));
     }
-    
-    
+
+
     public function create()
     {
-        $categories = Category::with('newslist')->orderBy('name','asc')->get();
-        $menus = Menu::where('parent_id',0)->orderBy('name','asc')->get();
+        $categories = Category::with('newslist')->orderBy('name', 'asc')->get();
+        $menus = Menu::where('parent_id', 0)->orderBy('name', 'asc')->get();
 
-        return view('backend.menu.create', compact('categories','menus'));
+        return view('backend.menu.create', compact('categories', 'menus'));
     }
 
 
@@ -38,15 +38,15 @@ class MenuController extends Controller
         ]);
 
         Menu::create([
-            'type'      => $request->type, 
-            'name'      => $request->name, 
-            'menu_url'  => $request->menu_url, 
-            'menuorder' => $request->menuorder, 
+            'type'      => $request->type,
+            'name'      => $request->name,
+            'menu_url'  => $request->menu_url,
+            'menuorder' => $request->menuorder,
             'parent_id' => $request->parent_id
         ]);
 
         $notification = array(
-            'message'    => 'Menu created successfully !', 
+            'message'    => 'Menu created successfully !',
             'alert-type' => 'success'
         );
 
@@ -62,9 +62,9 @@ class MenuController extends Controller
 
     public function edit(Menu $menu)
     {
-        $menus = Menu::where('parent_id',0)->orderBy('name','asc')->get();
-        
-        return view('backend.menu.edit', compact('menu','menus'));
+        $menus = Menu::where('parent_id', 0)->orderBy('name', 'asc')->get();
+
+        return view('backend.menu.edit', compact('menu', 'menus'));
     }
 
 
@@ -78,9 +78,9 @@ class MenuController extends Controller
         ]);
 
         $menu->update([
-            'name'      => $request->name, 
-            'menu_url'  => $request->menu_url, 
-            'menuorder' => $request->menuorder, 
+            'name'      => $request->name,
+            'menu_url'  => $request->menu_url,
+            'menuorder' => $request->menuorder,
             'parent_id' => $request->parent_id
         ]);
 
@@ -98,29 +98,31 @@ class MenuController extends Controller
         return back()->with(['message' => 'Menu deleted successfully.']);
     }
 
-    public function getMenuItems(){
+    public function getMenuItems()
+    {
 
         $menutype = request()->input('menutype');
 
         switch ($menutype) {
             case 'category':
-                $menuitems = Category::select('id','name')->where('status',1)->orderBy('name','asc')->get();
+                $menuitems = Category::select('id', 'name')->where('status', 1)->orderBy('name', 'asc')->get();
                 break;
 
             case 'news':
-                $menuitems = News::select('id','title as name')->where('status',1)->orderBy('title','asc')->get();
+                $menuitems = News::select('id', 'title as name')->where('status', 1)->orderBy('title', 'asc')->get();
                 break;
-            
+
             default:
                 $menuitems = [];
                 break;
         }
 
-        return response()->json([ 'menuitems' => $menuitems ]);
+        return response()->json(['menuitems' => $menuitems]);
     }
 
-    public function getMenuItemsDetails(){
-        
+    public function getMenuItemsDetails()
+    {
+
         if (request()->has(['menutype', 'menuitemid'])) {
 
             $menutype   = request()->input('menutype');
@@ -128,22 +130,22 @@ class MenuController extends Controller
 
             switch ($menutype) {
                 case 'category':
-                $menudetails = Category::findOrFail($menuitemid);
-                break;
-                
+                    $menudetails = Category::findOrFail($menuitemid);
+                    break;
+
                 case 'news':
-                $menudetails = News::findOrFail($menuitemid);
-                break;
-                
+                    $menudetails = News::findOrFail($menuitemid);
+                    break;
+
                 default:
-                $menudetails = [];
-                break;
+                    $menudetails = [];
+                    break;
             }
         }
 
-        if(request()->ajax()){
+        if (request()->ajax()) {
 
-            return response()->json([ 'menudetails' => $menudetails ]);
+            return response()->json(['menudetails' => $menudetails]);
         }
     }
 }

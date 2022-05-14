@@ -1,14 +1,15 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
-$factory->define(App\Category::class, function (Faker $faker) {
+$factory->define(App\Models\Category::class, function (Faker $faker) {
 
-    $category = 'Category-'.$faker->unique()->randomDigit;
-    
+    $category = 'Category-' . $faker->unique()->randomDigit;
+
     return [
         'name'      => $category,
-        'slug'      => str_slug($category),
+        'slug'      => Str::slugs($category),
         'image'     => 'category.jpg',
         'status'    => $faker->boolean
     ];

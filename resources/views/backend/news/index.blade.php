@@ -55,7 +55,7 @@
                                     </td>
                                     <td>{{ $news->title }}</td>
                                     <td>{{ $news->slug }}</td>
-                                    <td>{{ str_limit(strip_tags($news->details),300) }}</td>
+                                    <td>{{ Str::limit(strip_tags($news->details),300) }}</td>
                                     <td>{{ @$news->category->name }}</td>
                                     <td>{{ $news->status ? 'Published' : 'Unpublished' }}</td>
                                     <td>{{ $news->featured ? 'Featured' : '' }}</td>

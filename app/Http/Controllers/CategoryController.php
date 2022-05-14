@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -29,20 +30,20 @@ class CategoryController extends Controller
             'image'  => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
 
         if ($request->hasFile('image')) {
-            $imageName = 'category-'.time().uniqid().'.'.$request->image->getClientOriginalExtension();
+            $imageName = 'category-' . time() . uniqid() . '.' . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('images'), $imageName);
         }
 
         Category::create([
             'name'   => $request->name,
-            'slug'   => str_slug($request->name),
+            'slug'   => Str::slug($request->name),
             'image'  => $imageName,
             'status' => $status
         ]);
@@ -56,7 +57,7 @@ class CategoryController extends Controller
         //
     }
 
- 
+
     public function edit(Category $category)
     {
         $category = Category::findOrFail($category->id);
@@ -72,9 +73,9 @@ class CategoryController extends Controller
             'image'  => 'image|mimes:jpg,png,jpeg'
         ]);
 
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
 
@@ -82,20 +83,19 @@ class CategoryController extends Controller
 
         if ($request->hasFile('image')) {
 
-            if(file_exists(public_path('images/') . $category->image)){
+            if (file_exists(public_path('images/') . $category->image)) {
                 unlink(public_path('images/') . $category->image);
             }
 
-            $imageName = 'category-'.time().uniqid().'.'.$request->image->getClientOriginalExtension();
+            $imageName = 'category-' . time() . uniqid() . '.' . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('images'), $imageName);
-
-        }else{
+        } else {
             $imageName = $category->image;
         }
 
         $category->update([
             'name'   => $request->name,
-            'slug'   => str_slug($request->name),
+            'slug'   => Str::slug($request->name),
             'image'  => $imageName,
             'status' => $status
         ]);
@@ -108,7 +108,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($category->id);
 
-        if(file_exists(public_path('images/') . $category->image)){
+        if (file_exists(public_path('images/') . $category->image)) {
             unlink(public_path('images/') . $category->image);
         }
 
