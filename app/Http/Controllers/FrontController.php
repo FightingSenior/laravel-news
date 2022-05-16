@@ -33,9 +33,8 @@ class FrontController extends Controller
         $category           = Category::where('slug', $slug)->first();
         $featurednewslist   = $category->newslist()->where('status', 1)->where('featured', 1)->take(5)->get();
         $newscategorylist   = $category->newslist()->where('status', 1)->where('featured', 0)->get();
-        $advertisements     = Advertisement::where('type', 'category')->where('slug', $slug)->first();
 
-        return view('frontend.pages.category', compact('category', 'featurednewslist', 'newscategorylist', 'advertisements'));
+        return view('frontend.pages.category', compact('category', 'featurednewslist', 'newscategorylist'));
     }
 
     public function pageNews($slug)

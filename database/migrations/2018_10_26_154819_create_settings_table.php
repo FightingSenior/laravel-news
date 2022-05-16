@@ -27,7 +27,6 @@ class CreateSettingsTable extends Migration
             $table->string('youtube')->nullable();
             $table->text('about_us')->nullable();
             $table->string('address')->nullable();
-            $table->integer('breaking_news_category_id')->nullable();
             $table->timestamps();
         });
     }

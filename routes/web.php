@@ -43,10 +43,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     Route::resource('users', 'UsersController');
 
     Route::resource('settings', 'SettingController')->only(['index', 'store']);
-    Route::get('settings/breakingnews', 'SettingController@breakingNews')->name('settings.breakingnews');
-    Route::post('settings/breakingnews/store', 'SettingController@storeBreakingNews')->name('settings.breakingnews.store');
-
-    Route::resource('advertisements', 'AdvertisementController')->only(['index', 'store']);
 
     Route::resource('menus', 'MenuController');
     Route::post('menuitems-json', 'MenuController@getMenuItems')->name('menuitems.json');

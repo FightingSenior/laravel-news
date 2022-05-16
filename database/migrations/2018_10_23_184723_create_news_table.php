@@ -21,7 +21,6 @@ class CreateNewsTable extends Migration
             $table->string('image');
             $table->integer('category_id');
             $table->boolean('status');
-            $table->boolean('featured');
             $table->integer('view_count')->default(0);
             $table->timestamps();
         });

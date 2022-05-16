@@ -14,7 +14,7 @@
                         <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
                         @else
                         <li><a href="{{ route('profile') }}"><i class="fas fa-user-alt"></i> {{ auth()->user()->name }}</a></li>
-                        <li><a href="{{ route('login') }}" onclick="event.preventDefault(); document.getElementById('logout-form-front').submit();"><i class="fas fa-sign-in-alt"></i> Logout</a></li>
+                        <li><a href="{{ route('login') }}" onclick="event.preventDefault(); document.getElementById('logout-form-front').submit();"><i class="fas fa-sign-in-alt"></i> Đăng xuất</a></li>
                         <form id="logout-form-front" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
@@ -22,24 +22,6 @@
 
                 </ul>
             </div>
-
-            @if(isset($newstickers) && count($newstickers) > 0) 
-                <div class="breaking-news-ticker" id="breakingnewsticker">
-                    <div class="bn-label">Tin nóng hổi</div>
-                    <div class="bn-news">
-                        <ul>
-                            @foreach ($newstickers as $key => $news)
-                                <li><a href="{{ route('page.news',$news->slug) }}">{{ ++$key}}. {{ $news->title }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="bn-controls">
-                        <button><span class="bn-arrow bn-prev"></span></button>
-                        <button><span class="bn-action"></span></button>
-                        <button><span class="bn-arrow bn-next"></span></button>
-                    </div>
-                </div>
-            @endif
 
             <div class="socials">
                 <ul>
@@ -73,21 +55,9 @@
                 @elseif(isset($headersettings) && $headersettings['site_name'])
                     {{ $headersettings['site_name'] }}
                 @else
-                    NEWS PORTAL
+                    TIN TỨC 24H
                 @endif
             </a>
-        </div>
-        <div class="ads">
-            @foreach ($headerads as $item)
-                @if (request()->is('/') && $item->type == 'home')
-                    <img src="{{ asset('images/advertisements/'.$item->header_top) }}" alt="Ads" class="width-100">
-                @elseif ($item->type == 'category')
-                    @if(request()->path() == 'page/category/'.$item->slug)
-                        <img src="{{ asset('images/advertisements/'.$item->header_top) }}" alt="Ads" class="width-100">
-                    @endif
-                @endif
-                
-            @endforeach
         </div>
     </div>
 </div>

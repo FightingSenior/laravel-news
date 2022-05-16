@@ -55,7 +55,6 @@
             </div>
 
             @include('backend.layout.partials.footer')
-            @include('backend.layout.partials.right-sidebar')
 
             <div class="control-sidebar-bg"></div>
             

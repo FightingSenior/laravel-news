@@ -23,18 +23,6 @@
                     </li>
                     @endforeach
                     @endif
-
-                    <li>
-                        <a href="javascript:void(0)"><i class="fas fa-ellipsis-v"></i></a>
-                        @if(isset($mainmenus[10000]))
-                        <ul>
-                            @foreach($mainmenus[10000] as $mainmenu)
-                            <li>
-                                <a href="{{ $mainmenu->menu_url }}">{{ $mainmenu->name }}</a>
-                            </li>
-                            @endforeach
-                        </ul>
-                        @endif
                     </li>
                 </ul>
             </nav>

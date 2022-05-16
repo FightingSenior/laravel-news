@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 
-@section('title', 'Profile')
+@section('title', 'Hồ sơ')
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('backend/plugins/iCheck/square/blue.css') }}">
@@ -10,12 +10,12 @@
 
 <section class="content-header">
     <h1>
-        {{ auth()->user()->name }}'s Profile
+        Thông tin của {{ auth()->user()->name }}
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">General Elements</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#">Các hình thức</a></li>
+        <li class="active">Các yếu tố chung</li>
     </ol>
 </section>
 
@@ -25,7 +25,7 @@
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Update Profile</h3>
+                    <h3 class="box-title">Cập nhật thông tin</h3>
                 </div>
 
                 <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" role="form">
@@ -33,31 +33,31 @@
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="editusername">User Name</label>
+                            <label for="editusername">Tên người dùng</label>
                             <input type="text" name="name" class="form-control" id="editusername" value="{{ $user->name }}">
                         </div>
                         <div class="form-group">
-                            <label for="edituseremail">User Email</label>
+                            <label for="edituseremail">Email người dùng</label>
                             <input type="email" name="email" class="form-control" id="edituseremail" value="{{ $user->email }}">
                         </div>
                         <div class="box-img">
                             <img src="{{ asset('images/'.$user->photo) }}" alt="{{ $user->name }}" class="img-responsive">
                         </div>
                         <div class="form-group">
-                            <label for="newsimage">Featured Image</label>
+                            <label for="newsimage">Avatar</label>
                             <input type="file" name="photo" id="newsimage">
-                            <p class="help-block">(Image must be in .png or .jpg format)</p>
+                            <p class="help-block">(Hình ảnh phải ở định dạng .png hoặc .jpg)</p>
                         </div>
                         <hr>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="status" {{ $user->status ? 'checked' : '' }}> Active
+                                <input type="checkbox" name="status" {{ $user->status ? 'checked' : '' }}> Hoạt động
                             </label>
                         </div>
                     </div>
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary btn-flat">UPDATE</button>
+                        <button type="submit" class="btn btn-primary btn-flat">Cập nhật</button>
                     </div>
 
                 </form>
@@ -68,27 +68,27 @@
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Change Password</h3>
+                    <h3 class="box-title">Thay đổi mật khẩu</h3>
                 </div>
                 <form action="{{ route('profile.changepassword') }}" method="POST" role="form">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="currentpassword">Current Password</label>
+                            <label for="currentpassword">Mật khẩu hiện tại</label>
                             <input type="password" name="currentpassword" class="form-control" id="currentpassword">
                         </div>
                         <div class="form-group">
-                            <label for="newpassword">New Password</label>
+                            <label for="newpassword">Mật khẩu mới</label>
                             <input type="password" name="newpassword" class="form-control" id="newpassword">
                         </div>
                         <div class="form-group">
-                            <label for="newpasconfirm">Confirm Password</label>
+                            <label for="newpasconfirm">Xác nhận mật khẩu</label>
                             <input type="password" name="newpassword_confirmation" class="form-control" id="newpasconfirm">
                         </div>
                     </div>
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary btn-flat">CHANGE PASSWORD</button>
+                        <button type="submit" class="btn btn-primary btn-flat">Thay đổi mật khẩu</button>
                     </div>
                 </form>
             </div>
