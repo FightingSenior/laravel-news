@@ -16,11 +16,6 @@
             <h3>
                 <a href="{{ route('page.news',$topnews->slug) }}">{{ $topnews->title }}</a>
             </h3>
-
-            <!-- @if($key == 0)
-            <p>{{ $topnews->details }}</p>
-            @endif -->
-
             <ul>
                 <li><i class="far fa-folder"></i> <a href="{{ route('page.category',$topnews->category->slug) }}">{{ $topnews->category->name }}</a></li>
                 <li><i class="far fa-clock"></i> {{ $topnews->created_at->diffForHumans() }}</li>
@@ -35,29 +30,25 @@
     <div class="section-news container">
 
         <div class="news">
-            @foreach($newscategory as $key => $topnews)
             <div class="news-category-container">
+                @foreach($newscategory as $key => $topnews)
+                @if($key == 0)
                 <h2>{{$topnews->category->name}}</h2>
                 <div class="news-category">
-                    <!-- foreach($newscategory_one as $key => $topnews) -->
+                    @endif
                     <div class="section-item">
-                        <a href="{!!route('page.news',$topnews->slug) !!}" class="bg-image" style="background-image: url('{{asset('images')}}}/{{$topnews->image}}')"></a>
+                        <a href="{!!route('page.news',$topnews->slug) !!}" class="bg-image" style="background-image: url('{{asset('images')}}/{{$topnews->image}}')"></a>
                         <div>
                             <h3><a href="{{ route('page.news',$topnews->slug) }}">{{ $topnews->title }}</a></h3>
-                            <!-- @if($key == 0)
-                            <p>{!! $topnews->details !!}</p>
-                            @endif -->
                             <ul>
                                 <li><i class="far fa-folder"></i> <a href="{{ route('page.category',$topnews->category->slug) }}">{{ @$topnews->category->name }}</a></li>
                                 <li><i class="far fa-clock"></i> {{ $topnews->created_at->diffForHumans() }}</li>
                             </ul>
                         </div>
                     </div>
-                    <!-- endforeach -->
+                    @endforeach
                 </div>
             </div>
-            @endforeach
-
         </div>
 
         <aside class="sidebar">

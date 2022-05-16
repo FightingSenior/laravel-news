@@ -28,7 +28,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Hover Data Table</h3>
+                    <h3 class="box-title">Danh sách</h3>
                 </div>
 
                 <div class="box-body">
@@ -36,10 +36,10 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Image</th>
-                                <th>Name</th>
+                                <th>Hình ảnh</th>
+                                <th>Tên</th>
                                 <th>Slug</th>
-                                <th>Status</th>
+                                <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -53,7 +53,8 @@
                                 </td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->slug }}</td>
-                                <td>{{ $category->status ? 'Active' : 'Inactive' }}</td>
+                                <td>{{ $category->status ? 'Hoạt động' : 'Không hoạt động
+' }}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('admin.category.edit',$category->id) }}" class="btn btn-warning btn-flat"><i class="fa fa-edit"></i></a>
@@ -70,17 +71,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Slug</th>
-                                <th>Status</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
 

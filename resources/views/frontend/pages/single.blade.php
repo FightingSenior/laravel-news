@@ -23,8 +23,6 @@
             <div class="news-single">
 
                 <div class="section-item">
-                    <img src="{{ asset('images/'.$newssingle->image) }}" alt="{{ $newssingle->title }}" class="width-100">
-
                     <h1>{{ $newssingle->title }}</h1>
 
                     <p>{!! $newssingle->details !!}</p>
