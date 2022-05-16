@@ -34,7 +34,12 @@
                 <form action="{{ route('admin.category.update',$category->id) }}" method="POST" enctype="multipart/form-data" role="form">
                     @csrf
                     @method('PUT')
-
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="categoryname">Tên danh mục</label>
+                            <input type="text" name="name" class="form-control" id="categoryname">
+                        </div>
+                    </div>
                     <div class="box-body">
                         <div class="box-header with-border">
                             <h3 class="box-title">Hình ảnh</h3>

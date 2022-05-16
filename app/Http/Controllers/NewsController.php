@@ -41,12 +41,6 @@ class NewsController extends Controller
             $status = false;
         }
 
-        if (isset($request->featured)) {
-            $featured = true;
-        } else {
-            $featured = false;
-        }
-
         if ($request->hasFile('image')) {
             $imageName = 'news-' . time() . uniqid() . '.' . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('images'), $imageName);
@@ -59,7 +53,6 @@ class NewsController extends Controller
             'category_id'   => $request->category_id,
             'image'         => $imageName,
             'status'        => $status,
-            'featured'      => $featured
         ]);
 
         return redirect()->route('admin.news.index')->with(['message' => 'Tin tức được tạo thành công!']);
@@ -96,12 +89,6 @@ class NewsController extends Controller
             $status = false;
         }
 
-        if (isset($request->featured)) {
-            $featured = true;
-        } else {
-            $featured = false;
-        }
-
         $news = News::findOrFail($news->id);
 
         if ($request->hasFile('image')) {
@@ -123,7 +110,6 @@ class NewsController extends Controller
             'category_id'   => $request->category_id,
             'image'         => $imageName,
             'status'        => $status,
-            'featured'      => $featured
         ]);
 
         return redirect()->route('admin.news.index')->with(['message' => 'Tin tức được cập nhật thành công!']);

@@ -29,23 +29,23 @@
                     <img src="{{ asset('images/'.auth()->user()->photo) }}" class="img-circle" alt="User Image">
                     <p>
                       {{ auth()->user()->name }}
-                      <small>Member since {{ date('M. Y',strtotime(auth()->user()->created_at)) }}</small>
+                      <small>Thành viên từ {{ date('M. Y',strtotime(auth()->user()->created_at)) }}</small>
                     </p>
                   </li>
 
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="{{ route('profile.update') }}" class="btn btn-success btn-flat">Profile</a>
+                      <a href="{{ route('profile.update') }}" class="btn btn-success btn-flat">Thông tin</a>
                     </div>
                     <div>
-                      <a href="{{ route('home') }}" target="_blank" class="btn btn-info btn-flat">Visit Website</a>
+                      <a href="{{ route('home') }}" target="_blank" class="btn btn-info btn-flat">Trang chủ</a>
                     </div>
                     <div class="pull-right">
                       <a href="javascript:void(0)" class="btn btn-danger btn-flat" 
                         onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-                        Sign out
+                        Đăng xuất
                       </a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

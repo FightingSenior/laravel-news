@@ -16,33 +16,6 @@
 </section>
 
 <section class="section">
-    <div class="section-grid container">
-
-        @foreach($featurednewslist as $key => $featurednews)
-        <div class="section-item">
-            <a href="{{ route('page.news',$featurednews->slug) }}">
-                <img src="{{ asset('images/'.$featurednews->image) }}" alt="{{ $featurednews->title }}" class="width-100">
-            </a>
-
-            <h3>
-                <a href="{{ route('page.news',$featurednews->slug) }}">{{ $featurednews->title }}</a>
-            </h3>
-
-            @if($key == 0)
-            <p>{!! $featurednews->details !!}</p>
-            @endif
-
-            <ul>
-                <li><i class="far fa-comment-alt"></i> <a href="#">{{ $featurednews->id }}</a></li>
-                <li><i class="far fa-clock"></i> {{ $featurednews->created_at->diffForHumans() }}</li>
-            </ul>
-        </div>
-        @endforeach
-
-    </div>
-</section>
-
-<section class="section">
 
     <div class="section-news container">
         <div class="news">

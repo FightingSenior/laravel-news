@@ -14,7 +14,6 @@ $factory->define(App\Models\News::class, function (Faker $faker) {
         'details'       => $faker->paragraph,
         'image'         => 'post.jpg',
         'status'        => $faker->boolean,
-        'featured'      => $faker->boolean,
         'category_id'   => $faker->numberBetween(1, 9)
     ];
 });

@@ -14,43 +14,43 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
 
-      <li class="header">MAIN NAVIGATION</li>
+      <li class="header">Điều hướng chính</li>
       <li>
         <a href="{{ url('/dashboard') }}">
           <i class="fa fa-dashboard"></i> 
-          <span>Dashboard</span>
+          <span>Bảng điều khiển</span>
         </a>
       </li>
       <li>
         <a href="{{ route('admin.category.index') }}">
           <i class="fa fa-th"></i> 
-          <span>Category</span>
+          <span>Danh mục</span>
         </a>
       </li>
       <li>
         <a href="{{ route('admin.news.index') }}">
           <i class="fa fa-th"></i> 
-          <span>News</span>
+          <span>Tin tức</span>
         </a>
       </li>
 
-      <li class="header">LABELS</li>
+      <li class="header">Nhãn</li>
       <li>
         <a href="{{ route('admin.users.index') }}">
           <i class="fa fa-users"></i> 
-          <span>Users</span>
+          <span>Người dùng</span>
         </a>
       </li>
       <li class="treeview">
         <a href="{{ route('admin.settings.index') }}">
           <i class="fa fa-gear text-red"></i> 
-          <span>Settings</span>
+          <span>Cài đặt</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{ route('admin.menus.index') }}"><i class="fa fa-circle-o"></i> Menu Setting</a></li>
+          <li><a href="{{ route('admin.menus.index') }}"><i class="fa fa-circle-o"></i> Menu</a></li>
         </ul>
       </li>
 

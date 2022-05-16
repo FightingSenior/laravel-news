@@ -4,20 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\Category;
-use App\Models\Advertisement;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
     public function index()
     {
         $topnewslist = News::latest()->whereHas('category')->where('status', 1)->take(5)->get();
-
-        // $newscategory_one   = News::latest()->whereHas('category')->where('category_id', 6)->where('status', 1)->take(9)->get();
-        // $newscategory_two   = News::latest()->whereHas('category')->where('category_id', 7)->where('status', 1)->take(3)->get();
-        // $newscategory_three = News::latest()->whereHas('category')->where('category_id', 3)->where('status', 1)->take(10)->get();
-        $newscategory = News::latest()->whereHas('category')->where('status', 1)->take(4)->get();
-
+        
+         $newscategory = News::latest()->whereHas('category')->where('status', 1)->take(4)->get();
+        
         return view(
             'frontend.index',
             compact(
@@ -31,10 +27,9 @@ class FrontController extends Controller
     public function pageCategory($slug)
     {
         $category           = Category::where('slug', $slug)->first();
-        $featurednewslist   = $category->newslist()->where('status', 1)->where('featured', 1)->take(5)->get();
-        $newscategorylist   = $category->newslist()->where('status', 1)->where('featured', 0)->get();
+        $newscategorylist   = $category->newslist()->where('status', 1)->get();
 
-        return view('frontend.pages.category', compact('category', 'featurednewslist', 'newscategorylist'));
+        return view('frontend.pages.category', compact('category', 'newscategorylist'));
     }
 
     public function pageNews($slug)

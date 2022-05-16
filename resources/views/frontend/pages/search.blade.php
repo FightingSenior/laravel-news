@@ -26,8 +26,6 @@
                             <div>
                                 <h3><a href="{{ route('page.news',$news->slug) }}">{{ $news->title }}</a></h3>
 
-                                <p>{{ $news->details }}</p>
-
                                 <ul>
                                     <li><i class="far fa-folder"></i> <a href="{{ route('page.category',$news->category->slug) }}">{{ $news->category->name }}</a></li>
                                     <li><i class="far fa-clock"></i> {{ $news->created_at->diffForHumans() }}</li>

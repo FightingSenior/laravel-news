@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 16, 2022 at 12:37 PM
+-- Generation Time: May 16, 2022 at 05:48 PM
 -- Server version: 5.7.33
 -- PHP Version: 8.1.5
 
@@ -21,8 +21,6 @@ USE `laravel-news`;
 
 --
 -- Table structure for table `advertisements`
---
--- Creation: May 16, 2022 at 12:36 PM
 --
 
 DROP TABLE IF EXISTS `advertisements`;
@@ -45,8 +43,6 @@ CREATE TABLE `advertisements` (
 --
 -- Table structure for table `categories`
 --
--- Creation: May 16, 2022 at 12:36 PM
---
 
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
@@ -59,12 +55,18 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(7, 'công nghệ', 'cong-nghe', 'category-165271879262827cc8bdee4.jpg', 1, '2022-05-16 16:33:12', '2022-05-16 16:33:53'),
+(8, 'chính trị', 'chinh-tri', 'category-165271885662827d087245b.jpg', 1, '2022-05-16 16:34:16', '2022-05-16 16:34:25');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `menus`
---
--- Creation: May 16, 2022 at 12:36 PM
 --
 
 DROP TABLE IF EXISTS `menus`;
@@ -79,13 +81,18 @@ CREATE TABLE `menus` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `type`, `name`, `menu_url`, `menuorder`, `parent_id`, `created_at`, `updated_at`) VALUES
+(5, 'category', 'chính trị', 'http://localhost/laravel-news/public/page/category/chinh-tri', 0, 0, '2022-05-16 16:35:21', '2022-05-16 16:35:21'),
+(6, 'category', 'công nghệ', 'http://localhost/laravel-news/public/page/category/cong-nghe', 0, 0, '2022-05-16 16:35:35', '2022-05-16 16:35:35');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `migrations`
---
--- Creation: May 12, 2022 at 11:29 AM
--- Last update: May 16, 2022 at 12:36 PM
 --
 
 DROP TABLE IF EXISTS `migrations`;
@@ -115,8 +122,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 -- Table structure for table `news`
 --
--- Creation: May 16, 2022 at 12:36 PM
---
 
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
@@ -132,12 +137,18 @@ CREATE TABLE `news` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `slug`, `details`, `image`, `category_id`, `status`, `view_count`, `created_at`, `updated_at`) VALUES
+(8, 'Sửa Bộ Chính trị Đảng Lao động Triều Tiên họp khẩn nhằm đối phó với dịch COVID-19', 'sua-bo-chinh-tri-dang-lao-dong-trieu-tien-hop-khan-nham-doi-pho-voi-dich-covid-19', '<p>\r\n\r\n</p><h2><i><u></u><b></b></i><b></b>Hãng thông tấn trung ương Triều Tiên (KCNA) đưa tin Bộ Chính trị Ban chấp hành trung ương Đảng Lao động Triều Tiên đã họp khẩn ngày 15/5 nhằm thảo luận các biện pháp phòng chống dịch COVID-19.<b></b><i></i></h2><p>\r\n\r\n</p><div><div><img alt=\"Ch thch nh\" src=\"https://cdnmedia.baotintuc.vn/Upload/OND64xLJqhpDJlQ2Gd1dpw/files/2022/05/trieu-tien-16522a.jpg\">Nhà lãnh đạo Triều Tiên Kim Jong-un (giữa, phía xa) chủ trì cuộc họp Bộ chính trị về các biện pháp phòng chống dịch COVID-19, tại Bình Nhưỡng, ngày 15/5/2022. Ảnh: Yonhap/TTXVN</div><p>Tại cuộc họp, nhà lãnh đạo Kim Jong-un ra chỉ thị lập tức ổn định nguồn cung dược phẩm tại thành phố Bình Nhưỡng, với sự tham gia của các lực lượng quân y của Quân đội Nhân dân Triều Tiên. Ông Kim Jong-un nêu rõ thực trạng thuốc chưa được cung ứng đầy đủ cho các nhà thuốc dù Bộ Chính trị đã ban hành lệnh khẩn cấp, lập tức giải phóng cũng như cung ứng kịp thời kho thuốc dự trữ nhà nước và yêu cầu tất cả các nhà thuốc chuyển sang hoạt động 24/24h. </p><p>Cùng ngày 15/5, Triều Tiên công bố thêm 8 ca tử vong, nâng tổng số ca không qua khỏi lên 50 người và hơn 392.920 người có triệu chứng sốt.</p><p>Trong khi đó, theo quan chức y tế cấp cao của Hàn Quốc Sohn Young-rae, giới chức y tế tại Seoul nhận định đợt bùng phát dịch COVID-19 tại Triều Tiên có thể sẽ diễn biến nghiêm trọng hơn so với thông tin công bố chính thức.</p></div><div></div><div><p>Ngày 16/5, Bộ Ngoại giao Hàn Quốc cho biết các quan chức của Hàn Quốc và Mỹ đã có cuộc điện đàm thảo luận về tình hình dịch COVID-19 tại Triều Tiên. </p><p>Đặc phái viên của Hàn Quốc về hòa bình và các vấn đề an ninh trên Bán đảo Triều Tiên, ông Kim Gunn, và người đồng cấp Mỹ Sung Kim đã bày tỏ lo ngại về tình hình dịch COVID-19 ở Triều Tiên. Hai quan chức nhất trí tham vấn chặt chẽ về cách thức cung cấp viện trợ nhân đạo cho Bình Nhưỡng cùng sự phối hợp với cộng đồng quốc tế. Trong cuộc điện đàm, ông Sung Kim tái khẳng định ủng hộ việc Seoul thúc đẩy cung cấp vaccine và vật tư y tế cho Triều Tiên.</p></div>\r\n\r\n<br><p></p><p><br></p><p></p>', 'news-165271908262827deac64d9.jpg', 8, 1, 1, '2022-05-16 16:38:02', '2022-05-16 16:38:36'),
+(9, 'Ăn theo thảm họa tiền số LUNA, một số đồng coin tăng giá bất thường', 'an-theo-tham-hoa-tien-so-luna-mot-so-dong-coin-tang-gia-bat-thuong', '<p>\r\n\r\n</p><h1>\r\n\r\n<div><b></b>Các memecoin ăn theo vụ sập của LUNA có nhiều dấu hiệu bất thường, rủi ro cao cho nhà đầu tư.</div><div><div><p>Gần đây, thị trường xuất hiện nhiều dự án tiền số \"ăn theo\" thảm họa tiền số LUNA. Trong đó, các memecoin này đã có biến động giá lớn sau khi được niêm yết trên sàn giao dịch phi tập trung.</p><p>Theo mô tả, F**kLuna được phát hành nhằm phản đối đội ngũ phát triển của dự án và toàn bộ hệ sinh thái Terra. “Chúng tôi có thể đã ‘thuận buồm xuôi gió’ với thị trường. Đến khi gặp phải Do Kwon, mọi thứ trở nên lộn xộn. LUNA phải trả số tiền tiết kiệm lại cho chúng tôi”, đội ngũ của dự án F**kLuna đề cập trên trang chủ.</p><img alt=\"Xuat hien loat memecoin an theo vu sap cua LUNA anh 1\" src=\"https://static-images.vnncdn.net/files/publish/2022/5/16/an-theo-tham-hoa-tien-so-luna-mot-so-dong-coin-tang-gia-bat-thuong-df647fb969fb4b6c88039f3246f3b79a.jpg\"><p><em>F**kLuna được niêm yết trên sàn giao dịch PancakeSwap hôm 14/5.</em></p><p>Hiện Twitter chính thức của dự án này có khoảng 2.677 lượt theo dõi. Hội nhóm trên Telegram thu hút hơn 4.000 thành viên tham gia.</p><p>So với các tiêu chí để đánh giá một dự án tiền số, F**kLuna có nhiều dấu hiệu bất thường. Đầu tiên, đội ngũ phát triển hoàn toàn ẩn danh. Theo đánh giá từ <em>ScamAdviser</em>, website của dự án này chỉ đạt mốc 40/100 điểm. Dữ liệu cho thấy người đứng sau trang<em>&nbsp;f**kluna.io </em>đã giấu danh tính.</p><p>Bên cạnh đó, F**kLuna đang được niêm yết trên nền tảng PancakeSwapV2, sàn giao dịch mà ai cũng có thể niêm yết token. Đồng thời, các token trên sàn phi tập trung thường có biến động giá lớn, dễ bị thao túng.</p><p>Theo thông tin từ <em>PooCoin</em>, giá đồng F**kLuna tăng hơn 11 lần sau khi được niêm yết trên sàn phi tập trung. Tuy vậy, giá đồng tiền số này cũng nhanh chóng sụt giảm 8 lần sau khi có đợt bán tháo lớn và không có lực mua vào.</p><p>Ngoài F**kLuna, thị trường tiền số còn xuất hiện dự án có tên BabyLuna. Hiện tại, dự án này chỉ có mã hợp đồng thông minh (smart contract) và đã được niêm yết trên sàn giao dịch.</p><p>Các kênh thông tin liên quan như Twitter, Telegram, website hay đội ngũ phát triển BabyLuna vẫn còn là một ẩn số. Trên tiêu các tiêu chí để đánh giá dự án tiền số, đây được xem là điểm trừ rất lớn khi mọi thứ còn mập mờ.</p><img alt=\"Xuat hien loat memecoin an theo vu sap cua LUNA anh 2\" src=\"https://static-images.vnncdn.net/files/publish/2022/5/16/an-theo-tham-hoa-tien-so-luna-mot-so-dong-coin-tang-gia-bat-thuong-21fc9ea722084975a47edb1c309a0089.jpg\"><p><em>Giá đồng BabyLuna biến động mạnh khi vừa được niêm yết trên sàn giao dịch phi tập trung.</em></p><p>Sau khi được niêm yết trên sàn giao dịch phi tập trung, giá đồng Baby Luna đã tăng trưởng hơn 300%, từ mốc 0,000000031 USD/ đồng lên 0,00000012 USD/đồng vào khuya ngày 15/4.</p><p>Sau cú sập giá của LUNA, Do Kwon, Đồng sáng lập kiêm CEO của TerraForm Lab, đưa đề xuất “hồi sinh hệ sinh thái Terra”. Mấu chốt của sáng kiến này là xây dựng lại hệ thống mới với nguồn cung giới hạn 1 tỷ LUNA. Điều này đồng nghĩa với việc cả dự án sẽ được đưa về thời điểm trước cú sập, trừ lượng vốn hóa đã bốc hơi.</p><p>Trong đó 40%, tương đương 400 triệu token sẽ được chia cho những người nắm giữ LUNA trước sự kiện de-peg của UST (mất mốc 1 USD). Do Kwon cho biết dữ liệu để xác định lấy từ thời điểm cuối cùng UST có giá 1 USD trên sàn giao dịch Binance.</p><p>400 triệu LUNA sẽ được chia cho những người nắm giữ stablecoin UST đến thời điểm thiết lập lại mạng. Điều này có thể kích thích lực mua cho đồng UST trong thời gian tới, vì nhóm này được chia một lượng lớn tiền số.</p><p>Ngoài ra, 100 triệu token sẽ được phân bổ cho những người nắm giữ LUNA đến trước thời điểm đóng mạng. 10% token còn lại được sử dụng để phát triển cộng đồng trong tương lai.</p><div><p>Thông tin về loại tiền số trong bài viết không phải là lời khuyên đầu tư từ <em>Zing News</em>. Hoạt động đầu tư tiền mã hóa chưa được pháp luật Việt Nam công nhận và bảo vệ. Các loại tiền số luôn tiềm ẩn nhiều rủi ro tài chính.</p></div></div></div>\r\n\r\n<b></b><br></h1><p></p>', 'news-165271921362827e6d313ec.jpg', 7, 1, 1, '2022-05-16 16:40:13', '2022-05-16 16:41:01');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `password_resets`
---
--- Creation: May 16, 2022 at 12:36 PM
 --
 
 DROP TABLE IF EXISTS `password_resets`;
@@ -151,8 +162,6 @@ CREATE TABLE `password_resets` (
 
 --
 -- Table structure for table `personal_access_tokens`
---
--- Creation: May 16, 2022 at 12:36 PM
 --
 
 DROP TABLE IF EXISTS `personal_access_tokens`;
@@ -172,9 +181,6 @@ CREATE TABLE `personal_access_tokens` (
 
 --
 -- Table structure for table `roles`
---
--- Creation: May 16, 2022 at 12:36 PM
--- Last update: May 16, 2022 at 12:36 PM
 --
 
 DROP TABLE IF EXISTS `roles`;
@@ -199,8 +205,6 @@ INSERT INTO `roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 
 --
 -- Table structure for table `settings`
---
--- Creation: May 16, 2022 at 12:36 PM
 --
 
 DROP TABLE IF EXISTS `settings`;
@@ -227,9 +231,6 @@ CREATE TABLE `settings` (
 --
 -- Table structure for table `users`
 --
--- Creation: May 16, 2022 at 12:36 PM
--- Last update: May 16, 2022 at 12:36 PM
---
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -251,9 +252,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role_id`, `photo`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Mr. Admin', 'admin@admin.com', NULL, '$2y$10$ElLpKyBClB9KZm8Oir0WOe11arJ4i8xcirWRvG8s3lgXe79XyoA7O', 1, 'default.png', 1, 'E8y7brk35Q', '2022-05-16 12:36:50', NULL),
-(2, 'Mr. Editor', 'editor@editor.com', NULL, '$2y$10$yODM8GQr4KsbXkR/agvy/OIbv0rlBxaqDJMUUdkTdct94kqzes2b.', 2, 'default.png', 1, 'DpnYAlwIog', '2022-05-16 12:36:50', NULL),
-(3, 'Mr. User', 'user@user.com', NULL, '$2y$10$XqYaxJAzTdVEmBALAezDkuxL7yCUT9NE.ddbIcHXbLhp.DBfCvumG', 3, 'default.png', 1, '0V483B6Ddh', '2022-05-16 12:36:51', NULL);
+(1, 'Mr. Admin', 'admin@admin.com', NULL, '$2y$10$ElLpKyBClB9KZm8Oir0WOe11arJ4i8xcirWRvG8s3lgXe79XyoA7O', 1, 'default.png', 1, 'hhtkwQE9c6GD0aJQe3Pd10bdFi6HL26bj4MmRiUqcLGgfDsy2KBKaU7UeNhW', '2022-05-16 12:36:50', NULL),
+(2, 'Mr. Editor', 'editor@editor.com', NULL, '$2y$10$yODM8GQr4KsbXkR/agvy/OIbv0rlBxaqDJMUUdkTdct94kqzes2b.', 2, 'default.png', 1, 'q4OF9sy9FG4RqZNT25JD8rhH5ncYIZsUvZ37cwoPIwcyHr6JKmLodgZbe3Nh', '2022-05-16 12:36:50', NULL);
 
 --
 -- Indexes for dumped tables
@@ -337,13 +337,13 @@ ALTER TABLE `advertisements`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -355,7 +355,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
