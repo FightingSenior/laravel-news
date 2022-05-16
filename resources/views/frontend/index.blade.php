@@ -41,7 +41,7 @@
                 <div class="news-category">
                     <!-- foreach($newscategory_one as $key => $topnews) -->
                     <div class="section-item">
-                        <a href="{{route('page.news',$topnews->slug) }}" class="bg-image" style="background-image: url('{{asset('images')}}}/{{$topnews->image}}')"></a>
+                        <a href="{!!route('page.news',$topnews->slug) !!}" class="bg-image" style="background-image: url('{{asset('images')}}}/{{$topnews->image}}')"></a>
                         <div>
                             <h3><a href="{{ route('page.news',$topnews->slug) }}">{{ $topnews->title }}</a></h3>
                             <!-- @if($key == 0)
