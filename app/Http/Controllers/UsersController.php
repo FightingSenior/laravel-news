@@ -51,7 +51,7 @@ class UsersController extends Controller
             'status'    => $status
         ]);
 
-        return redirect()->route('admin.users.index')->with(['message' => 'User added successfully.']);
+        return redirect()->route('admin.users.index')->with(['message' => 'Đã thêm người dùng thành công.']);
     }
 
     public function edit($id)
@@ -97,7 +97,7 @@ class UsersController extends Controller
             'status'    => $status
         ]);
 
-        return redirect()->route('admin.users.index')->with(['message' => 'User updated successfully.']);
+        return redirect()->route('admin.users.index')->with(['message' => 'Đã cập nhật người dùng thành công.']);
     }
 
     public function destroy($id)
@@ -110,6 +110,6 @@ class UsersController extends Controller
 
         $user->delete();
 
-        return back()->with(['message' => 'User deleted successfully!']);
+        return back()->with(['message' => 'Đã xóa người dùng thành công!']);
     }
 }

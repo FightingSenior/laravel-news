@@ -46,7 +46,7 @@ class MenuController extends Controller
         ]);
 
         $notification = array(
-            'message'    => 'Menu created successfully !',
+            'message'    => 'Đã tạo menu thành công!',
             'alert-type' => 'success'
         );
 
@@ -85,7 +85,7 @@ class MenuController extends Controller
         ]);
 
         $notification = array(
-            'message'    => 'Menu updated successfully !'
+            'message'    => 'Đã cập nhật menu thành công!'
         );
 
         return redirect()->route('admin.menus.index')->with($notification);
@@ -95,7 +95,7 @@ class MenuController extends Controller
     public function destroy(Menu $menu)
     {
         $menu->delete();
-        return back()->with(['message' => 'Menu deleted successfully.']);
+        return back()->with(['message' => 'Đã xóa menu thành công.']);
     }
 
     public function getMenuItems()

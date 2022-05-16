@@ -71,6 +71,6 @@ class AdvertisementController extends Controller
             ]
         );
 
-        return back()->with(['message' => 'Advertisement updated successfully.']);
+        return back()->with(['message' => 'Đã cập nhật quảng cáo thành công.']);
     }
 }

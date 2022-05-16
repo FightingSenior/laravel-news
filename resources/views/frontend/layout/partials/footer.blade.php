@@ -25,7 +25,7 @@
             <div class="footer-column">
                 <h2>News Subscription</h2>
                 <div class="newsletter-subscription">
-                    <p>Stay updated and get our latest news right into your inbox and get awesome offers.</p>
+                    <p>Luôn cập nhật và nhận tin tức mới nhất của chúng tôi ngay trong hộp thư đến của bạn và nhận các ưu đãi tuyệt vời.</p>
                     <form action="" method="">
                         <input type="email" name="" class="mailbox" placeholder="yourmail@example.com">
                         <input type="submit" value="Subscribe" class="submitbox">
@@ -39,7 +39,7 @@
 <div class="footer-bottom-area">
     <div class="container">
         <div class="footer-bottom">
-            <p>&copy; 2018 - All right reserved by Developer Canvas.</p>
+            <p>&copy; 2022 - Đồ án website tin tức.</p>
         </div>
     </div>
 </div>

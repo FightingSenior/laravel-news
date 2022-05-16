@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 
-@section('title', 'Search Page')
+@section('title', 'Tìm kiếm')
 
 @section('content')
 
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     @empty 
-                        <h2>No result found!</h2>
+                        <h2>Không tìm thấy!</h2>
                     @endforelse
                 </div>
             </div>

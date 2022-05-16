@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 
-@section('title', 'Category Page')
+@section('title', 'Danh mục')
 
 @section('content')
 

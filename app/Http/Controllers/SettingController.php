@@ -68,10 +68,10 @@ class SettingController extends Controller
         );
 
         $notification = array(
-            'message'    => 'Settings updated successfully !'
+            'message'    => 'Đã cập nhật cài đặt thành công!'
         );
 
-        return back()->with('success', 'Setting updated successfully.')->with($notification);
+        return back()->with('success', 'Đã cập nhật cài đặt thành công.')->with($notification);
     }
 
 
@@ -98,6 +98,6 @@ class SettingController extends Controller
             ]
         );
 
-        return back()->with('message', 'Breaking news category updated successfully !');
+        return back()->with('message', 'Đã cập nhật thành công danh mục tin tức nóng hổi!');
     }
 }

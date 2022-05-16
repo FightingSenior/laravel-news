@@ -62,7 +62,7 @@ class NewsController extends Controller
             'featured'      => $featured
         ]);
 
-        return redirect()->route('admin.news.index')->with(['message' => 'News created successfully!']);
+        return redirect()->route('admin.news.index')->with(['message' => 'Tin tức được tạo thành công!']);
     }
 
 
@@ -126,7 +126,7 @@ class NewsController extends Controller
             'featured'      => $featured
         ]);
 
-        return redirect()->route('admin.news.index')->with(['message' => 'News updated successfully!']);
+        return redirect()->route('admin.news.index')->with(['message' => 'Tin tức được cập nhật thành công!']);
     }
 
 
@@ -140,6 +140,6 @@ class NewsController extends Controller
 
         $news->delete();
 
-        return back()->with(['message' => 'News deleted successfully!']);
+        return back()->with(['message' => 'Tin tức được xóa thành công!']);
     }
 }

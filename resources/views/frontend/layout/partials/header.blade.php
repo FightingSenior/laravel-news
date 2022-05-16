@@ -10,8 +10,8 @@
                     <li><span>{{ date('h:i A') }} - {{ date('d M Y') }}</span></li>
 
                     @guest
-                        <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Register</a></li>
-                        <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Sign in</a></li>
+                        <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Đăng kí</a></li>
+                        <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
                         @else
                         <li><a href="{{ route('profile') }}"><i class="fas fa-user-alt"></i> {{ auth()->user()->name }}</a></li>
                         <li><a href="{{ route('login') }}" onclick="event.preventDefault(); document.getElementById('logout-form-front').submit();"><i class="fas fa-sign-in-alt"></i> Logout</a></li>
@@ -25,7 +25,7 @@
 
             @if(isset($newstickers) && count($newstickers) > 0) 
                 <div class="breaking-news-ticker" id="breakingnewsticker">
-                    <div class="bn-label">Breaking News</div>
+                    <div class="bn-label">Tin nóng hổi</div>
                     <div class="bn-news">
                         <ul>
                             @foreach ($newstickers as $key => $news)

@@ -114,6 +114,6 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return back()->with(['message' => 'Category deleted successfully!']);
+        return back()->with(['message' => 'Đã xóa danh mục thành công!']);
     }
 }

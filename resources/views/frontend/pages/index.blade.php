@@ -1,15 +1,15 @@
 @extends('frontend.layout.master')
 
-@section('title', 'Archive Page')
+@section('title', 'Lưu trữ')
 
 @section('content')
 
     <section class="section">
         <div class="page-header container">
             <ul class="border-vertical">
-                <li><a href="{{ route('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{{ route('home') }}"><i class="fas fa-home"></i> Trang chủ</a></li>
                 <li> / </li>
-                <li> Archive</li>
+                <li> Lưu trữ</li>
             </ul>
         </div>
     </section>

@@ -31,7 +31,7 @@ class LoginController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return redirect()->route('login')->with('errorcredentials', 'Credentials do not match or Account not active!');
+        return redirect()->route('login')->with('errorcredentials', 'Thông tin đăng nhập không khớp hoặc Tài khoản không hoạt động!');
     }
 
     public function logout()

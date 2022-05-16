@@ -1,9 +1,9 @@
 <div class="sidebar-item">
     <div class="tabs-container">
         <div class="tabs">
-            <div data-target="#panel-one" class="tab active">Popular</div>
-            <div data-target="#panel-two" class="tab">Recent</div>
-            <div data-target="#panel-three" class="tab">Discussed</div>
+            <div data-target="#panel-one" class="tab active">Nổi tiếng</div>
+            <div data-target="#panel-two" class="tab">Gần đây</div>
+            <div data-target="#panel-three" class="tab">Thảo luận</div>
         </div>
         <div class="panel active" id="panel-one">
             @foreach($newstabspopular as $popular)
@@ -43,7 +43,7 @@
 
 <div class="sidebar-item">
     <div class="sidebar-news category-news">
-        <h2>Category List</h2>
+        <h2>Danh sách danh mục</h2>
         @foreach($newscategory_list as $newscategory)
         <div class="section-item">
             <h3>
@@ -58,7 +58,7 @@
 
 <div class="sidebar-item">
     <div class="sidebar-news news-with-image">
-        <h2>Sidebar News Image</h2>
+        <h2>Hình ảnh tin tức</h2>
         @foreach($newscategory_two as $topnews)
         <div class="section-item">
             <div class="section-item-news">
@@ -78,7 +78,7 @@
 
 <div class="sidebar-item">
     <div class="sidebar-news">
-        <h2>Sidebar News</h2>
+        <h2>Tin mới</h2>
         @foreach($newscategory_two as $topnews)
         <div class="section-item">
             <h3><a href="">{{ $topnews->title }}</a></h3>
@@ -93,7 +93,7 @@
 
 <div class="sidebar-item">
     <div class="sidebar-news">
-        <h2>Random News</h2>
+        <h2>Tin ngẫu nhiên</h2>
         @if($newsinRandomOrder)
         <div class="section-item">
             <a href="#">

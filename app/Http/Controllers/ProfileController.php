@@ -52,7 +52,7 @@ class ProfileController extends Controller
         ]);
 
         $notification = [
-            'message' => 'Profile updated successfully!'
+            'message' => 'Hồ sơ được cập nhật thành công!'
         ];
 
         if (request('status')) {
@@ -68,14 +68,14 @@ class ProfileController extends Controller
     {
         if (!(Hash::check($request->get('currentpassword'), Auth::user()->password))) {
             return back()->with([
-                'message'    => 'Your current password does not matches with the password you provided! Please try again.',
+                'message'    => 'Mật khẩu hiện tại của bạn không khớp với mật khẩu bạn đã cung cấp! Vui lòng thử lại.',
                 'alert-type' => 'error'
             ]);
         }
 
         if (strcmp($request->get('currentpassword'), $request->get('newpassword')) == 0) {
             return back()->with([
-                'message'    => 'New Password cannot be same as your current password! Please choose a different password.',
+                'message'    => 'Mật khẩu mới không được giống với mật khẩu hiện tại của bạn! Vui lòng chọn một mật khẩu khác.',
                 'alert-type' => 'error'
             ]);
         }
@@ -89,6 +89,6 @@ class ProfileController extends Controller
         $user->password = bcrypt($request->get('newpassword'));
         $user->save();
 
-        return back()->with(['message' => 'Password changed successfully.']);
+        return back()->with(['message' => 'Mật khẩu được thay đổi thành công.']);
     }
 }
